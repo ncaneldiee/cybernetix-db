@@ -25,7 +25,7 @@ class CreateSysfoMemberTable extends Migration {
             $table->string('image')->default('default.jpg');
             $table->enum('gender', ['f', 'm'])->default('m');
             $table->text('address')->nullable();
-            $table->integer('status')->unsigned()->default(2);
+            $table->integer('status')->default(2);
         });
     }
 

@@ -8,6 +8,8 @@ class Member extends Model
 {
     protected $table = 'sysfo_member';
 
+    protected $fillable = ['name'];
+
     public $timestamps = false;
 
     public function group()

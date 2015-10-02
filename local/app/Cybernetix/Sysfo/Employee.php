@@ -8,6 +8,8 @@ class Employee extends Model
 {
     protected $table = 'sysfo_employee';
 
+    protected $fillable = ['name'];
+
     public $timestamps = false;
 
     public function member()

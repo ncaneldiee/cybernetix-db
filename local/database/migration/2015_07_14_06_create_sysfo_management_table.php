@@ -20,7 +20,7 @@ class CreateSysfoManagementTable extends Migration {
             $table->string('tenure');
             $table->text('vision')->nullable();
             $table->text('mission')->nullable();
-            $table->integer('status')->unsigned()->default(0);
+            $table->integer('status')->default(0);
         });
     }
 

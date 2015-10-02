@@ -23,7 +23,7 @@ class CreateSysfoManagementLogTable extends Migration
             $table->integer('member_id')->unsigned();
             $table->foreign('member_id')->references('id')->on('sysfo_member')->onDelete('cascade');
             $table->text('description')->nullable();
-            $table->integer('status')->unsigned()->default(0);
+            $table->integer('status')->default(0);
         });
     }
 

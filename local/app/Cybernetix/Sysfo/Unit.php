@@ -8,6 +8,8 @@ class Unit extends Model
 {
     protected $table = 'sysfo_unit';
 
+    protected $fillable = ['name'];
+
     public $timestamps = false;
 
     public function member()

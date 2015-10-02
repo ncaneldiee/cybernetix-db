@@ -36,40 +36,38 @@ CREATE TABLE IF NOT EXISTS `app_account_attempt` (
 
 CREATE TABLE IF NOT EXISTS `app_role` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-    `key` varchar(255) NOT NULL,
     `name` varchar(255) NOT NULL,
     `description` text,
     PRIMARY KEY (`id`),
-    UNIQUE KEY `key` (`key`)
+    UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `app_role_account` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-    `account_role_id` int(11) unsigned NOT NULL,
+    `role_id` int(11) unsigned NOT NULL,
     `account_id` int(11) unsigned NOT NULL,
     PRIMARY KEY (`id`),
-    KEY `account_role_id` (`account_role_id`),
+    KEY `role_id` (`role_id`),
     KEY `account_id` (`account_id`),
-    FOREIGN KEY (`account_role_id`) REFERENCES `app_role` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`role_id`) REFERENCES `app_role` (`id`) ON DELETE CASCADE,
     FOREIGN KEY (`account_id`) REFERENCES `app_account` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `app_permission` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-    `key` varchar(255) NOT NULL,
     `name` varchar(255) NOT NULL,
     `description` text,
     PRIMARY KEY (`id`),
-    UNIQUE KEY `key` (`key`)
+    UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `app_permission_role` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-    `account_permission_id` int(11) unsigned NOT NULL,
-    `account_role_id` int(11) unsigned NOT NULL,
+    `permission_id` int(11) unsigned NOT NULL,
+    `role_id` int(11) unsigned NOT NULL,
     PRIMARY KEY (`id`),
-    KEY `account_permission_id` (`account_permission_id`),
-    KEY `account_role_id` (`account_role_id`),
-    FOREIGN KEY (`account_permission_id`) REFERENCES `app_permission` (`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`account_role_id`) REFERENCES `app_role` (`id`) ON DELETE CASCADE
+    KEY `permission_id` (`permission_id`),
+    KEY `role_id` (`role_id`),
+    FOREIGN KEY (`permission_id`) REFERENCES `app_permission` (`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`role_id`) REFERENCES `app_role` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

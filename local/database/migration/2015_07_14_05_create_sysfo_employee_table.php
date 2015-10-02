@@ -20,9 +20,9 @@ class CreateSysfoEmployeeTable extends Migration {
             $table->foreign('employee_id')->references('id')->on('sysfo_employee')->onDelete('set null');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->integer('lane')->unsigned()->default(0);
-            $table->integer('sort')->unsigned()->default(0);
-            $table->integer('status')->unsigned()->default(0);
+            $table->integer('lane')->default(0);
+            $table->integer('sort')->default(0);
+            $table->integer('status')->default(0);
         });
     }
 

@@ -8,6 +8,8 @@ class Management extends Model
 {
     protected $table = 'sysfo_management';
 
+    protected $fillable = ['name', 'tenure', 'vision', 'mission'];
+
     public $timestamps = false;
 
     public function employee()
