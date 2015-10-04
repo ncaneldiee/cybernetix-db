@@ -26,4 +26,38 @@ class Account extends Model implements AuthenticatableContract,
     {
         return $this->belongsToMany('App\Cybernetix\Role', 'app_role_user');
     }
+
+    public function can($name)
+    {
+        foreach ($this->role as $role) {
+            foreach ($role->permission as $permission) {
+                if ($permission->name == $name) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public function attachRole($name)
+    {
+        $this->role()->attach($name);
+    }
+
+    public function detachRole($name)
+    {
+        $this->role()->detach($name);
+    }
+
+    public function hasRole($name)
+    {
+        foreach($this->role as $role) {
+            if ($role->name == $name) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

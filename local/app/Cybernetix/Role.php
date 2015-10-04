@@ -19,4 +19,25 @@ class Role extends Model
     {
         return $this->belongsToMany('App\Cybernetix\Permission', 'app_permission_role');
     }
+
+    public function attachPermission($name)
+    {
+        $this->permission()->attach($name);
+    }
+
+    public function detachPermission($name)
+    {
+        $this->permission()->detach($name);
+    }
+
+    public function hasPermission($name)
+    {
+        foreach ($this->permission as $permission) {
+            if ($permission->name == $name) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
